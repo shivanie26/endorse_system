@@ -1,0 +1,173 @@
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(59,130,246,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(139,92,246,0.06) 0%, transparent 50%),
+    var(--bg);
+  padding: 24px;
+}
+
+.bgGrid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(59,130,246,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59,130,246,0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+
+.orb1, .orb2 {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  pointer-events: none;
+  animation: orbFloat 8s ease-in-out infinite;
+}
+.orb1 { width:300px; height:300px; background:rgba(59,130,246,0.12); top:-100px; left:-100px; }
+.orb2 { width:200px; height:200px; background:rgba(139,92,246,0.10); bottom:-50px; right:-50px; animation-delay:-4s; }
+
+@keyframes orbFloat {
+  0%,100% { transform: translate(0,0) scale(1); }
+  50% { transform: translate(20px,20px) scale(1.1); }
+}
+
+.card {
+  position: relative;
+  z-index: 10;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 44px;
+  width: 100%;
+  max-width: 460px;
+  box-shadow: var(--shadow), 0 0 0 1px rgba(255,255,255,0.03) inset;
+  animation: cardIn 0.5s cubic-bezier(0.22,1,0.36,1) both;
+}
+@keyframes cardIn {
+  from { opacity:0; transform: translateY(24px) scale(0.97); }
+  to   { opacity:1; transform: none; }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+.logoIcon {
+  width: 40px; height: 40px;
+  background: linear-gradient(135deg, var(--accent), var(--purple));
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  box-shadow: 0 4px 16px rgba(59,130,246,0.3);
+}
+.logoText {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text);
+}
+.logoText span { color: var(--accent2); }
+
+.title {
+  font-size: 26px;
+  font-weight: 800;
+  margin-bottom: 6px;
+  font-family: var(--font-display);
+}
+.sub { color: var(--text2); font-size: 13.5px; margin-bottom: 28px; }
+
+.form { display: flex; flex-direction: column; gap: 16px; }
+
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media (max-width: 480px) { .grid2 { grid-template-columns: 1fr; } }
+
+.field { display: flex; flex-direction: column; gap: 6px; }
+
+.label {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text2);
+  letter-spacing: 0.04em;
+}
+
+.input {
+  padding: 12px 14px;
+  background: var(--bg2);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius2);
+  color: var(--text);
+  font-size: 14px;
+  font-family: var(--font-body);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.14);
+}
+.input::placeholder { color: var(--text3); }
+
+.pwBar {
+  height: 4px;
+  background: var(--border);
+  border-radius: 4px;
+  margin-top: 4px;
+  overflow: hidden;
+}
+
+.rolePicker { display: flex; gap: 10px; }
+.roleBtn {
+  flex: 1;
+  padding: 10px 12px;
+  background: var(--bg2);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius2);
+  color: var(--text2);
+  font-size: 13.5px;
+  font-weight: 500;
+  text-align: center;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.roleBtn:hover { border-color: var(--border2); color: var(--text); }
+.roleBtnActive {
+  border-color: var(--accent);
+  background: rgba(59,130,246,0.1);
+  color: var(--accent2);
+  font-weight: 600;
+}
+
+.submitBtn {
+  width: 100%;
+  padding: 13px;
+  background: linear-gradient(135deg, var(--accent), var(--purple));
+  border: none;
+  border-radius: var(--radius2);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  font-family: var(--font-display);
+  cursor: pointer;
+  letter-spacing: 0.02em;
+  box-shadow: 0 4px 16px rgba(59,130,246,0.25);
+  transition: transform 0.15s, box-shadow 0.15s, opacity 0.15s;
+}
+.submitBtn:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(59,130,246,0.38); }
+.submitBtn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.switch {
+  text-align: center;
+  margin-top: 20px;
+  color: var(--text2);
+  font-size: 13.5px;
+}
+.switch a { color: var(--accent2); font-weight: 600; text-decoration: none; }
+.switch a:hover { text-decoration: underline; }

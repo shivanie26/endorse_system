@@ -1,0 +1,164 @@
+.page { animation: fadeUp 0.4s ease both; }
+@keyframes fadeUp { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:none; } }
+
+.header { margin-bottom: 22px; }
+.headerTitle { font-size: 24px; font-weight: 800; font-family: var(--font-display); margin-bottom: 4px; }
+.headerSub { color: var(--text2); font-size: 14px; }
+
+.toolbar { display: flex; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
+.searchWrap { position: relative; flex: 1; min-width: 200px; }
+.searchIcon { position: absolute; left: 13px; top: 50%; transform: translateY(-50%); color: var(--text3); font-size: 14px; pointer-events: none; }
+.searchInput {
+  width: 100%; padding: 11px 14px 11px 38px;
+  background: var(--card); border: 1.5px solid var(--border);
+  border-radius: var(--radius2); color: var(--text);
+  font-size: 13.5px; font-family: var(--font-body); outline: none;
+  transition: border-color 0.2s;
+}
+.searchInput:focus { border-color: var(--accent); }
+.searchInput::placeholder { color: var(--text3); }
+.filterSelect {
+  padding: 11px 13px;
+  background: var(--card); border: 1.5px solid var(--border);
+  border-radius: var(--radius2); color: var(--text2);
+  font-size: 13px; font-family: var(--font-body); outline: none; cursor: pointer;
+  transition: border-color 0.2s;
+}
+.filterSelect:focus { border-color: var(--accent); }
+.filterSelect option { background: var(--bg2); }
+
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+@media (max-width: 900px) { .grid { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 580px) { .grid { grid-template-columns: 1fr; } }
+
+.loadingGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.skeleton {
+  height: 220px; border-radius: var(--radius);
+  background: var(--card); border: 1px solid var(--border);
+  animation: pulse 1.5s ease infinite;
+}
+@keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.5; } }
+
+/* Card */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px 20px;
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+.card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 8px 24px rgba(59,130,246,0.12); }
+
+.cardTop { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+.cardAvatar {
+  width: 50px; height: 50px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 19px; font-weight: 700; color: #fff; flex-shrink: 0;
+}
+.cardName { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+.roleBadge { font-size: 11px; font-weight: 700; padding: 2px 9px; border-radius: 20px; }
+.roleAdmin { background: rgba(139,92,246,0.12); color: #c4b5fd; }
+.roleUser  { background: rgba(59,130,246,0.10); color: var(--accent2); }
+
+.cardSkills { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 12px; }
+.skillTag {
+  font-size: 11.5px; padding: 3px 9px; border-radius: 20px;
+  background: rgba(59,130,246,0.08); color: var(--accent3);
+  border: 1px solid rgba(59,130,246,0.14); font-weight: 500;
+}
+.skillTagMore { font-size: 11px; color: var(--text3); padding: 3px 6px; }
+
+.cardStats { margin-bottom: 14px; }
+.cardStat { font-size: 12px; color: var(--text2); }
+
+.cardFooter { display: flex; gap: 8px; }
+.btnView {
+  flex: 1; padding: 8px; border-radius: 8px; font-size: 12.5px; font-weight: 600;
+  border: 1.5px solid var(--border); background: none; color: var(--text2);
+  cursor: pointer; font-family: var(--font-body); transition: all 0.15s;
+}
+.btnView:hover { border-color: var(--accent); color: var(--accent2); background: rgba(59,130,246,0.07); }
+.btnEndorse {
+  flex: 1; padding: 8px; border-radius: 8px; font-size: 12.5px; font-weight: 600;
+  border: none; background: linear-gradient(135deg, var(--accent), var(--purple));
+  color: #fff; cursor: pointer; font-family: var(--font-body); transition: all 0.15s;
+}
+.btnEndorse:hover { opacity: 0.88; transform: translateY(-1px); }
+.btnEndorseDisabled {
+  flex: 1; padding: 8px; border-radius: 8px; font-size: 12.5px; font-weight: 600;
+  border: none; background: var(--bg2); color: var(--text3); cursor: not-allowed; font-family: var(--font-body);
+}
+
+/* Modal */
+.overlay {
+  position: fixed; inset: 0; z-index: 1000;
+  background: rgba(0,0,0,0.72); backdrop-filter: blur(8px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px; animation: fadeIn 0.2s ease;
+}
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+
+.modal {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 20px; width: 100%; max-width: 540px;
+  max-height: 88vh; overflow-y: auto; position: relative;
+  box-shadow: var(--shadow), 0 0 40px rgba(59,130,246,0.08);
+  animation: modalIn 0.3s cubic-bezier(0.22,1,0.36,1) both;
+}
+@keyframes modalIn { from { opacity:0; transform:scale(0.95) translateY(10px); } to { opacity:1; transform:none; } }
+
+.modalClose {
+  position: absolute; top: 14px; right: 14px; z-index: 10;
+  width: 30px; height: 30px; border-radius: 8px;
+  background: var(--bg2); border: 1px solid var(--border);
+  color: var(--text2); font-size: 16px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.15s;
+}
+.modalClose:hover { background: var(--bg3); color: var(--text); }
+
+.modalHeader { padding: 26px 26px 0; display: flex; align-items: center; gap: 16px; }
+.modalAvatar {
+  width: 68px; height: 68px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 26px; font-weight: 800; color: #fff; flex-shrink: 0;
+}
+.modalName { font-size: 21px; font-weight: 800; font-family: var(--font-display); }
+.modalMeta { color: var(--text2); font-size: 13px; margin-top: 3px; }
+.modalLinks { display: flex; gap: 7px; margin-top: 8px; flex-wrap: wrap; }
+.link {
+  padding: 4px 11px; border-radius: 6px; font-size: 11.5px; font-weight: 600;
+  text-decoration: none; display: inline-flex; align-items: center; gap: 5px;
+  transition: all 0.15s;
+}
+.linkLinkedin { background: rgba(10,102,194,0.15); color: #60a5fa; border: 1px solid rgba(10,102,194,0.25); }
+.linkLeetcode { background: rgba(249,115,22,0.12); color: #fb923c; border: 1px solid rgba(249,115,22,0.22); }
+.linkGithub   { background: rgba(255,255,255,0.06); color: var(--text2); border: 1px solid var(--border); }
+
+.modalBody { padding: 18px 26px 26px; }
+.sectionTitle {
+  font-size: 11.5px; font-weight: 700; color: var(--text2);
+  letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 12px;
+}
+
+.skillBar { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.skillBarIcon { font-size: 15px; width: 20px; text-align: center; flex-shrink: 0; }
+.skillBarName { width: 110px; font-size: 13px; font-weight: 500; flex-shrink: 0; }
+.skillBarTrack { flex: 1; height: 6px; background: var(--bg2); border-radius: 6px; overflow: hidden; }
+.skillBarFill { height: 6px; border-radius: 6px; background: linear-gradient(90deg, var(--accent), var(--accent2)); transition: width 0.5s; }
+.skillBarCount { width: 90px; text-align: right; font-size: 12px; color: var(--text2); }
+
+.endorseSelect {
+  flex: 1; padding: 10px 12px;
+  background: var(--bg2); border: 1.5px solid var(--border);
+  border-radius: var(--radius2); color: var(--text);
+  font-size: 13px; font-family: var(--font-body); outline: none;
+}
+.endorseSelect:focus { border-color: var(--accent); }
+.endorseBtn {
+  padding: 10px 20px; border-radius: var(--radius2); font-size: 13px; font-weight: 700;
+  border: none; background: linear-gradient(135deg, var(--accent), var(--purple));
+  color: #fff; cursor: pointer; font-family: var(--font-display);
+  transition: all 0.15s; white-space: nowrap;
+}
+.endorseBtn:hover { opacity: 0.88; transform: translateY(-1px); }

@@ -1,0 +1,148 @@
+/* ── Buttons ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border: none;
+  border-radius: var(--radius2);
+  font-family: var(--font-body);
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s, opacity 0.15s;
+  white-space: nowrap;
+}
+.btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none !important; }
+
+.btn_primary {
+  background: linear-gradient(135deg, var(--accent), var(--purple));
+  color: #fff;
+  box-shadow: 0 3px 14px rgba(59,130,246,0.25);
+  font-family: var(--font-display);
+  letter-spacing: 0.02em;
+}
+.btn_primary:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 5px 18px rgba(59,130,246,0.38); }
+
+.btn_secondary {
+  background: var(--bg2);
+  color: var(--text2);
+  border: 1.5px solid var(--border);
+}
+.btn_secondary:hover:not(:disabled) { border-color: var(--border2); color: var(--text); }
+
+.btn_danger {
+  background: rgba(239,68,68,0.08);
+  color: var(--red2);
+  border: 1.5px solid rgba(239,68,68,0.25);
+}
+.btn_danger:hover:not(:disabled) { background: rgba(239,68,68,0.16); }
+
+.btn_ghost {
+  background: none;
+  color: var(--text2);
+  border: 1.5px solid var(--border);
+}
+.btn_ghost:hover:not(:disabled) { border-color: var(--accent); color: var(--accent2); background: rgba(59,130,246,0.06); }
+
+.btn_sm  { padding: 6px 14px;  font-size: 12.5px; }
+.btn_md  { padding: 10px 20px; font-size: 14px; }
+.btn_lg  { padding: 13px 28px; font-size: 15px; font-family: var(--font-display); }
+.btn_full { width: 100%; }
+
+.spinner {
+  width: 16px; height: 16px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  display: inline-block;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Forms ── */
+.formGroup { display: flex; flex-direction: column; gap: 6px; }
+
+.label {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text2);
+  letter-spacing: 0.04em;
+}
+
+.input, .select {
+  width: 100%;
+  padding: 11px 14px;
+  background: var(--bg2);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius2);
+  color: var(--text);
+  font-size: 14px;
+  font-family: var(--font-body);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.input::placeholder { color: var(--text3); }
+.input:focus, .select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.14);
+}
+.select { cursor: pointer; }
+.select option { background: var(--bg2); }
+.textarea { resize: vertical; min-height: 80px; }
+.inputError { border-color: var(--red) !important; }
+.errorMsg { font-size: 12px; color: var(--red2); }
+
+/* ── Card ── */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  position: relative;
+  overflow: hidden;
+}
+.card[style*='--card-accent']::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--card-accent);
+  border-radius: 2px 2px 0 0;
+}
+
+/* ── Badge ── */
+.badge {
+  display: inline-block;
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+.badge_blue    { background: rgba(59,130,246,0.1); color: var(--accent2); }
+.badge_purple  { background: rgba(139,92,246,0.1); color: #c4b5fd; }
+.badge_green   { background: rgba(16,185,129,0.1); color: var(--green2); }
+.badge_red     { background: rgba(239,68,68,0.1);  color: var(--red2); }
+.badge_yellow  { background: rgba(245,158,11,0.1); color: var(--yellow2); }
+.badge_pink    { background: rgba(236,72,153,0.1); color: #f9a8d4; }
+
+/* ── Toggle ── */
+.toggle {
+  width: 44px; height: 24px;
+  background: var(--bg3);
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  cursor: pointer;
+  position: relative;
+  transition: background 0.2s, border-color 0.2s;
+  flex-shrink: 0;
+}
+.toggleOn { background: var(--accent); border-color: var(--accent); }
+.toggleKnob {
+  position: absolute;
+  top: 2px; left: 2px;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform 0.2s;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+}
+.toggleOn .toggleKnob { transform: translateX(20px); }
