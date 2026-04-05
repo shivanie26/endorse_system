@@ -1,5 +1,5 @@
 const express = require('express');
-const { protect, adminOnly } = require('../middleware/auth');
+const { protect } = require('../middleware/auth');
 const { getAllSkills, createSkill, updateSkill, deleteSkill } = require('../controllers/skill.controller');
 
 const router = express.Router();
@@ -7,8 +7,10 @@ const router = express.Router();
 router.use(protect);
 
 router.get('/',        getAllSkills);
-router.post('/',       adminOnly, createSkill);
-router.put('/:id',     adminOnly, updateSkill);
-router.delete('/:id',  adminOnly, deleteSkill);
+
+// ✅ allow all logged-in users
+router.post('/',       createSkill);
+router.put('/:id',     updateSkill);
+router.delete('/:id',  deleteSkill);
 
 module.exports = router;
