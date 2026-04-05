@@ -11,10 +11,9 @@ connectDB();
 
 const app = express();
 
-// CORS setup
+// ✅ FIXED CORS (allow all origins)
 app.use(cors({
-origin: process.env.CLIENT_URL || 'http://localhost:3000',
-credentials: true,
+origin: "*",
 }));
 
 // Middleware
