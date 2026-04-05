@@ -155,9 +155,7 @@ const SkillsPage = () => {
           <h2 className={styles.headerTitle}>Manage Skills</h2>
           <p className={styles.headerSub}>Track all registered skills, endorsement counts and growth metrics</p>
         </div>
-        {isAdmin && (
-          <button className={styles.addBtn} onClick={openAdd}>＋ Add Skill</button>
-        )}
+       <button className={styles.addBtn}>+ Add Skill</button>
       </div>
 
       <div className={styles.tableWrap}>
