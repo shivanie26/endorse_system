@@ -62,13 +62,13 @@ const ProfilePage = () => {
       });
       setPrefs({ ...(user.preferences || prefs) });
       setMySkills(
-        (user.skills || []).map(s => ({
-          skill: s.skill?._id || s.skill,
-          name:  s.skill?.name || '',
-          icon:  s.skill?.icon || '⭐',
-          level: s.level || 1,
-        }))
-      );
+  (user.skills || []).map(s => ({
+    skill: typeof s.skill === 'object' ? s.skill._id : s.skill,
+    name:  typeof s.skill === 'object' ? s.skill.name : 'Unknown Skill',
+    icon:  typeof s.skill === 'object' ? s.skill.icon : '⭐',
+    level: s.level || 1,
+  }))
+);
     }
     api.get('/skills').then(({ data }) => setAllSkills(data)).catch(() => {});
   }, [user]); // eslint-disable-line
