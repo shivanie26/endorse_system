@@ -150,3 +150,21 @@
   box-shadow: 0 1px 4px rgba(0,0,0,0.3);
 }
 .toggleOn .toggleKnob { transform: translateX(20px); }
+
+/* Add Skill button */
+.addSkillRow { display: flex !important; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 10px; }
+.addSkillBtn {
+  padding: 10px 20px;
+  border-radius: var(--radius2);
+  background: linear-gradient(135deg, var(--accent), var(--purple));
+  border: none;
+  color: #fff;
+  font-size: 13.5px;
+  font-weight: 700;
+  font-family: var(--font-display);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s;
+  box-shadow: 0 3px 10px rgba(59,130,246,0.2);
+}
+.addSkillBtn:hover { transform: translateY(-1px); box-shadow: 0 5px 14px rgba(59,130,246,0.32); }
